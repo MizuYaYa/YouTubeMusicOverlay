@@ -1,0 +1,16 @@
+{
+  "name": "youtube-music-overlay",
+  "packageManager": "yarn@4.7.0",
+  "workspaces": ["apps/*"],
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "lefthook": "^1.11.3"
+  },
+  "scripts": {
+    "chk": "biome check ./",
+    "chk:fix": "biome check --apply ./"
+  },
+  "type": "module"
+}
