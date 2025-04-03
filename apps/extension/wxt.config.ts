@@ -5,4 +5,7 @@ export default defineConfig({
   extensionApi: "chrome",
   modules: ["@wxt-dev/module-solid", "@wxt-dev/auto-icons"],
   outDir: "dist",
+  manifest: {
+    permissions: ["nativeMessaging", "tabs"],
+  },
 });
