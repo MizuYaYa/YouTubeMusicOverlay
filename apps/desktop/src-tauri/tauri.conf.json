@@ -13,8 +13,13 @@
     "windows": [
       {
         "title": "youtube-music-overlay-app",
-        "width": 800,
-        "height": 600
+        "width": 350,
+        "height": 150,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "decorations": false,
+        "shadow": false,
+        "resizable": false
       }
     ],
     "security": {

@@ -1360,6 +1360,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tauri-apps/plugin-positioner@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@tauri-apps/plugin-positioner@npm:2.2.0"
+  dependencies:
+    "@tauri-apps/api": "npm:^2.0.0"
+  checksum: 10c0/88724fb95e8d48c09ad5f98fb33a179a08306cfa17c78a37dc21c63ef6d5c117ec47002458f6882a0a3d00c24820a0ed62b3ef99b6b3e66a1bbc0abfcf3e5593
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.20.4":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
@@ -7056,6 +7065,7 @@ __metadata:
     "@tauri-apps/api": "npm:^2"
     "@tauri-apps/cli": "npm:^2"
     "@tauri-apps/plugin-opener": "npm:^2"
+    "@tauri-apps/plugin-positioner": "npm:^2.2.0"
     solid-js: "npm:^1.9.3"
     typescript: "npm:~5.6.2"
     vite: "npm:^6.0.3"
