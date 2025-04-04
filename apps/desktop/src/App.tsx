@@ -13,6 +13,7 @@ export type Media = {
 
 function App() {
   const [currentMedia, setCurrentMedia] = createSignal<Media | null>(null);
+  const [sleepAttempt, setSleepAttempt] = createSignal(0);
 
   listen<string>("native-message", (message) => {
     console.log("Received message from native:", message);
@@ -34,7 +35,15 @@ function App() {
   });
 
   setInterval(() => {
-    if (currentMedia()?.playbackState !== "playing") return;
+    if (currentMedia()?.playbackState !== "playing") {
+      setSleepAttempt((prev) => prev + 1);
+      if (sleepAttempt() > 120) {
+        setCurrentMedia(null);
+        setSleepAttempt(0);
+      }
+      return;
+    }
+    setSleepAttempt(0);
     setCurrentMedia((prev) => {
       if (!prev) return prev;
       return {
@@ -48,8 +57,8 @@ function App() {
   }, 1000);
 
   return (
-    <main class="container">
-      <Show when={currentMedia()} fallback={<p style={{ margin: "auto" }}>No media playing</p>}>
+    <main class="container" style={{ display: currentMedia() ? "" : "none" }}>
+      <Show when={currentMedia()}>
         {(media) => (
           <>
             <div class="media-card">
