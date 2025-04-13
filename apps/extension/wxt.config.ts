@@ -8,6 +8,6 @@ export default defineConfig({
   manifest: {
     name: "YouTube Music Overlay",
     description: "YouTube Musicで再生中の音楽をデスクトップアプリでオーバーレイ表示します。",
-    permissions: ["nativeMessaging", "tabs"],
+    permissions: ["nativeMessaging"],
   },
 });
