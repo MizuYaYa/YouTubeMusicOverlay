@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["commitlint", "lefthook"]
+  "cSpell.words": ["commitlint", "lefthook"],
+  "rust-analyzer.linkedProjects": ["apps/desktop/src-tauri/Cargo.toml"]
 }
