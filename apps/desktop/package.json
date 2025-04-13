@@ -1,7 +1,7 @@
 {
   "name": "youtube-music-overlay-app",
   "version": "0.1.0",
-  "description": "",
+  "description": "A tauri desktop app that displays the song data received from a Chrome extension as an overlay",
   "type": "module",
   "scripts": {
     "start": "vite",

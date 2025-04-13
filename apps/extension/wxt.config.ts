@@ -6,6 +6,8 @@ export default defineConfig({
   modules: ["@wxt-dev/module-solid", "@wxt-dev/auto-icons"],
   outDir: "dist",
   manifest: {
+    name: "YouTube Music Overlay",
+    description: "YouTube Musicで再生中の音楽をデスクトップアプリでオーバーレイ表示します。",
     permissions: ["nativeMessaging", "tabs"],
   },
 });

@@ -1,6 +1,6 @@
 {
   "name": "youtube-music-overlay-extension",
-  "description": "",
+  "description": "A Chrome extension to send song data playing on YouTube Music using Native Messaging",
   "private": true,
   "version": "0.1.0",
   "type": "module",

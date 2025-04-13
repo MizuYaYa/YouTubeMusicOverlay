@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "youtube-music-overlay-app",
+  "productName": "Youtube Music Overlay",
   "version": "0.1.0",
   "identifier": "com.mizuyaya.youtube-music-overlay-app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "youtube-music-overlay-app",
+        "title": "Youtube Music Overlay",
         "width": 350,
         "height": 150,
         "transparent": true,
