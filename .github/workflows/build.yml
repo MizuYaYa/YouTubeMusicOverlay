@@ -13,9 +13,6 @@ jobs:
       fail-fast: false
       matrix:
           platform: [windows-latest]
-    defaults:
-      run:
-        working-directory: apps/desktop
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -35,15 +32,17 @@ jobs:
       - name: Rust cache
         uses: swatinem/rust-cache@v2
         with:
-          workspaces: './src-tauri -> target'
+          workspaces: 'apps/desktop/src-tauri -> target'
 
       - name: install frontend dependencies
         run: yarn install
+        working-directory: apps/desktop
 
       - uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          projectPath: apps/desktop
           tagName: v__VERSION__
           releaseName: 'v__VERSION__'
           releaseBody: 'See the assets to download this version and install.'
