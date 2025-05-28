@@ -26,6 +26,9 @@ jobs:
       - name: corepack
         run: corepack enable
 
+      - name: cd desktop
+        run: cd apps/desktop
+
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
 
