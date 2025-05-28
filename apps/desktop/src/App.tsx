@@ -1,6 +1,7 @@
-import { Show, createSignal } from "solid-js";
+import { ErrorBoundary, Show, createSignal } from "solid-js";
 import "./App.css";
 import { listen } from "@tauri-apps/api/event";
+import { secondsToMMSSFormat, timestampStringToSeconds } from "./utils/parseTimestamp";
 
 export type Media = {
   title: string;
@@ -18,6 +19,8 @@ function App() {
   listen<string>("native-message", (message) => {
     console.log("Received message from native:", message);
     const messageObject = JSON.parse(message.payload);
+
+    const timeInSeconds = messageObject.timestamp.map(timestampStringToSeconds);
     setCurrentMedia({
       title: messageObject.title,
       artist: messageObject.artist,
@@ -25,10 +28,8 @@ function App() {
       artwork: messageObject.artwork,
       playbackState: messageObject.playbackState,
       timestamp: {
-        text: messageObject.timestamp,
-        number: messageObject.timestamp.map(
-          (time: string) => Number(time.split(":")[0]) * 60 + Number(time.split(":")[1]),
-        ),
+        text: timeInSeconds.map(secondsToMMSSFormat),
+        number: timeInSeconds,
       },
     });
     console.log(currentMedia());
@@ -61,21 +62,23 @@ function App() {
       <Show when={currentMedia()}>
         {(media) => (
           <>
-            <div class="media-card">
-              <img src={media().artwork.at(-1)} alt={media().title} class="media-artwork" />
-              <div class="media-info">
-                <div>
-                  <h3>{media().title}</h3>
-                  <p>{media().artist}</p>
-                  <p>{media().album ? `(${media().album})` : "\u00A0"}</p>
-                </div>
-                <div class="media-status">
-                  <span>{media().timestamp.text[0]}</span>
-                  <span>{media().timestamp.text.at(-1)}</span>
+            <ErrorBoundary fallback={(error) => error}>
+              <div class="media-card">
+                <img src={media().artwork.at(-1)} alt={media().title} class="media-artwork" />
+                <div class="media-info">
+                  <div>
+                    <h3>{media().title}</h3>
+                    <p>{media().artist}</p>
+                    <p>{media().album ? `(${media().album})` : "\u00A0"}</p>
+                  </div>
+                  <div class="media-status">
+                    <span>{media().timestamp.text[0]}</span>
+                    <span>{media().timestamp.text.at(-1)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <progress max={media().timestamp.number.at(-1)} value={media().timestamp.number[0]} />
+              <progress max={media().timestamp.number.at(-1)} value={media().timestamp.number[0]} />
+            </ErrorBoundary>
           </>
         )}
       </Show>
