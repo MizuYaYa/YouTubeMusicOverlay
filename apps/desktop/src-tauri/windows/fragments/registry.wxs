@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="AddNmh">
+        <RegistryKey Root="HKCU" Key="Software\Google\Chrome\NativeMessagingHosts\com.mizuyaya.youtube_music_overlay_app">
+          <RegistryValue Type="string" Value="[INSTALLDIR]resources\nmh-manifest.json"/>
+        </RegistryKey>
+      </Component>
+
+      <Component Id="AddEdge">
+        <RegistryKey Root="HKCU" Key="Software\Microsoft\Edge\Extensions\hlhgpimkhielmdomlpihnanhadkdeojk">
+          <RegistryValue Type="string" Value="https://clients2.google.com/service/update2/crx" Name="update_url"/>
+        </RegistryKey>
+      </Component>
+
+      <Component Id="AddChrome">
+        <RegistryKey Root="HKCU" Key="Software\Google\Chrome\Extensions\hlhgpimkhielmdomlpihnanhadkdeojk">
+          <RegistryValue Type="string" Value="https://clients2.google.com/service/update2/crx" Name="update_url"/>
+        </RegistryKey>
+      </Component>
+    </DirectoryRef>
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Youtube Music OverlayはGoogle ChromeとMicrosoft Edgeで利用できます。その他のブラウザをお使いの場合はChrome Web StoreでYoutube Music Overlay拡張機能を入手してください" />
+
+    <Feature Id="InstallExtension">
+      <ComponentRef Id="AddNmh"/>
+      <ComponentRef Id="AddEdge"/>
+      <ComponentRef Id="AddChrome"/>
+    </Feature>
+  </Fragment>
+</Wix>
