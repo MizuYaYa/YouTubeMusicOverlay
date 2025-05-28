@@ -1,8 +1,8 @@
 [package]
 name = "youtube-music-overlay-app"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "A tauri desktop app that displays the song data received from a Chrome extension as an overlay"
+authors = ["MizuYaYa"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -22,4 +22,15 @@ tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+tauri-plugin-positioner = { version = "2.0.0", features = ["tray-icon"] }
 
+[dependencies.windows]
+version = "0.52"
+features = [
+    "Win32_Foundation",
+    "Win32_System_Threading",
+    "Win32_UI_WindowsAndMessaging",
+]
+
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-positioner = "2"

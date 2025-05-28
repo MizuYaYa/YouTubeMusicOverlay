@@ -1,0 +1,7 @@
+{
+  "name": "com.mizuyaya.youtube_music_overlay_app",
+  "description": "Youtube Music Overlay App",
+  "path": "..\\youtube-music-overlay-app.exe",
+  "type": "stdio",
+  "allowed_origins": ["chrome-extension://hlhgpimkhielmdomlpihnanhadkdeojk/"]
+}
